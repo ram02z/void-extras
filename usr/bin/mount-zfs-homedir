@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -eu
+
+# Password is given to us via stdin, save it in a variable for later
+PASS=$(cat -)
+
+VOLNAME="pool/home/$PAM_USER"
+
+# Unlock and mount the volume
+zfs load-key "$VOLNAME" <<< "$PASS" || continue
+zfs mount "$VOLNAME" || true # ignore errors
