@@ -13,6 +13,7 @@ set $*
 XDG_RUNTIME_DIR=$(find /run/user -maxdepth 1 -mindepth 1 -type d -print -quit)
 if ! [ -z "$XDG_RUNTIME_DIR" ]; then
     WAYLAND_DISPLAY=$(find $XDG_RUNTIME_DIR -name "wayland-*" -type s -printf "%f" -quit)
+    SWAYSOCK=$(find $XDG_RUNTIME_DIR -name "sway-ipc.*" -type s -printf "%f" -quit)
 fi
 
 case "$1" in
@@ -90,12 +91,12 @@ case "$1" in
 			# lock screen
 			# FIXME: not sure why WAYLAND_DISPLAY is not exported
 			# Though I understand why XDG_RUNTIME_DIR is not
+			# Also, there is a delay where lockscreen is not shown
 			[ -z "$WAYLAND_DISPLAY" ] || runuser -l omar -c "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY setsid -f waylock"
 			# disable services
 			sv down iwd
 			sv down bluetoothd
-			# disable screen
-			[ -z "$WAYLAND_DISPLAY" ] || swaymsg output eDP-1 disable
+			zzz
 			;;
 		open)	
 			# enable laptop screen
@@ -103,8 +104,6 @@ case "$1" in
 			# enable services again
 			sv up iwd
 			sv up bluetoothd
-			# enable screen
-			[ -z "$WAYLAND_DISPLAY"] || swaymsg output eDP-1 enable
 			;;
 		*) logger "ACPI action undefined (LID): $2";;
 	esac
