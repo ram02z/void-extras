@@ -1,0 +1,3 @@
+Tweaked system files from my ZFS Void linux (x86_64-musl) setup
+
+Files are tracked for the sake of reproducability, however, should not be copied as system configuration can change.
