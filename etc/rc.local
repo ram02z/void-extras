@@ -7,4 +7,5 @@
 rfkill unblock wifi
 # Restore saved brightness
 light -I
-
+# Turn off micmute light
+echo 0 > /sys/devices/platform/thinkpad_acpi/leds/platform::micmute/brightness

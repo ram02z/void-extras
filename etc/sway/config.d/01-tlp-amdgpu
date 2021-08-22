@@ -1,0 +1,1 @@
+exec sudo tlp start -- RADEON_DPM_PERF_LEVEL_ON_BAT=low

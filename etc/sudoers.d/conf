@@ -1,0 +1,9 @@
+#Allow wheel group to execute any command (with password)
+%wheel ALL=(ALL) ALL
+
+# Allow passwordless access to the system poweroff/shutdown/sleep for desktop users
+%video ALL=(ALL) NOPASSWD: /usr/bin/poweroff
+%video ALL=(ALL) NOPASSWD: /usr/bin/reboot
+%video ALL=(ALL) NOPASSWD: /usr/bin/zzz
+
+%video ALL=(ALL) NOPASSWD: /usr/bin/tlp
