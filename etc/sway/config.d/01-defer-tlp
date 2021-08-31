@@ -1,0 +1,3 @@
+# defer executing tlp till after sway is launched
+# otherwise sway crashes due to amdgpu not being initialized
+exec sleep 5 && sudo tlp start
