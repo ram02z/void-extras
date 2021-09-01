@@ -8,4 +8,6 @@ rfkill unblock wifi
 # Restore saved brightness
 light -I
 # Turn off micmute light
-echo 0 > /sys/devices/platform/thinkpad_acpi/leds/platform::micmute/brightness
+echo 0 | tee /sys/devices/platform/thinkpad_acpi/leds/platform::micmute/brightness
+# Set amdgpu to auto
+echo "auto" | tee /sys/class/drm/card0/device/power_dpm_force_performance_level
