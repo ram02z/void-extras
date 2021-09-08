@@ -4,16 +4,12 @@
 # NOTE: This is a 2.6-centric script.  If you use 2.4.x, you'll have to
 #       modify it to not use /sys
 
-minspeed=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq`
-maxspeed=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
-setspeed="/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed"
-
 set $*
 
 XDG_RUNTIME_DIR=$(find /run/user -maxdepth 1 -mindepth 1 -type d -print -quit)
 if ! [ -z "$XDG_RUNTIME_DIR" ]; then
     WAYLAND_DISPLAY=$(find $XDG_RUNTIME_DIR -name "wayland-*" -type s -printf "%f" -quit)
-    SWAYSOCK=$(find $XDG_RUNTIME_DIR -name "sway-ipc.*" -type s -printf "%f" -quit)
+    # SWAYSOCK=$(find $XDG_RUNTIME_DIR -name "sway-ipc.*" -type s -printf "%f" -quit)
 fi
 
 case "$1" in
@@ -56,11 +52,11 @@ case "$1" in
             AC|ACAD|ADP0)
                 case "$4" in
                     00000000)
-                        echo -n $minspeed >$setspeed
+                        # echo -n $minspeed >$setspeed
                         #/etc/laptop-mode/laptop-mode start
                     ;;
                     00000001)
-                        echo -n $maxspeed >$setspeed
+                        # echo -n $maxspeed >$setspeed
                         #/etc/laptop-mode/laptop-mode stop
                     ;;
                 esac
