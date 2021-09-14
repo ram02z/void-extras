@@ -1,4 +1,0 @@
-# defer executing tlp till after sway is launched
-# otherwise sway crashes due to amdgpu not being initialized
-# I think this is due to forcing the perf level, not sure though
-exec sleep 3 && sudo tlp start

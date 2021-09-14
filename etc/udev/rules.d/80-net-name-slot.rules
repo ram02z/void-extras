@@ -1,1 +1,2 @@
+# NOTE: This workaround isn't required when iwd has UseDefaultInterface set to true
 # This file masks persistent renaming rules for network devices.
