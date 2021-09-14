@@ -1,3 +1,5 @@
-Tweaked system files from my ZFS Void linux (x86_64-musl) setup
+Tweaked system files from my Void linux setup
+
+Using ext4 and zfs for homedir
 
 Files are tracked for the sake of reproducibility, however, should not be copied as system configuration can change.
