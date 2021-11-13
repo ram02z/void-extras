@@ -6,8 +6,8 @@
 
 set $*
 
-XDG_RUNTIME_DIR=$(find /run/user -maxdepth 1 -mindepth 1 -type d -print -quit)
-if ! [ -z "$XDG_RUNTIME_DIR" ]; then
+XDG_RUNTIME_DIR="/tmp/omar-runtime/"
+if [ -d "$XDG_RUNTIME_DIR" ]; then
   WAYLAND_DISPLAY=$(find $XDG_RUNTIME_DIR -name "wayland-*" -type s -printf "%f" -quit)
   # SWAYSOCK=$(find $XDG_RUNTIME_DIR -name "sway-ipc.*" -type s -printf "%f" -quit)
 fi
