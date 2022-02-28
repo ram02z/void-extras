@@ -94,13 +94,12 @@ case "$1" in
   button/lid)
     case "$3" in
       close)
-        # NOTE: would be nice if zzz worked on my thinkpad :(
         logger "LID closed"
         # lock screen
         # FIXME: not sure why WAYLAND_DISPLAY is not exported
         # Though I understand why XDG_RUNTIME_DIR is not
         # Also, there is a delay where lockscreen is not shown
-        [ -z "$WAYLAND_DISPLAY" ] || runuser -l omar -c "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY setsid -f waylock"
+        [ -z "$WAYLAND_DISPLAY" ] || runuser -l omar -c "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR WAYLAND_DISPLAY=$WAYLAND_DISPLAY swaylock -f"
         # disable services
         sv down iwd
         sv down bluetoothd
